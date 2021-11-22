@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:spvm="clr-namespace:Notes_Clone.ViewModel"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             x:Class="Notes_Clone.View.SearchPage"
+             Title="Search page"
+             BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <spvm:SearchPageVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="sb" Text="{Binding Searchtext}" Placeholder="Enter the note you want to search !" TextChanged="sb_TextChanged" BackgroundColor="Black" PlaceholderColor="White" TextColor="White" CancelButtonColor="White">
+                <!--SearchBar.Behaviors>
+                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding Searchbutton}"/>                    
+                </SearchBar.Behaviors-->
+            </SearchBar>
+            <CollectionView  SelectedItem="{Binding SelectedNoteData}"  SelectionChangedCommand="{Binding UpdateNote}" ItemsSource="{Binding Note}" SelectionMode="Single" x:Name="w">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Frame BackgroundColor="{Binding COLOR}" BorderColor="Black" CornerRadius="10" Margin="10,5" HeightRequest="30">
+                            <StackLayout >
+                                <Label Text="{Binding TITLE}" TextColor="black" FontAttributes="Bold" />
+                                <Label Text="{Binding DATE}" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>        
+    </ContentPage.Content>
+</ContentPage>

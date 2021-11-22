@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:npvm="clr-namespace:Notes_Clone.ViewModel"
+             x:Class="Notes_Clone.View.NotePage"
+             BackgroundColor="{Binding Colors}"
+             NavigationPage.HasBackButton="false"
+             >    
+    <ContentPage.BindingContext>
+        <npvm:NotePageVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding Option}" Command="{Binding Save_Note}"/>
+        <ToolbarItem Text="Delete" Command="{Binding Delete_Note}" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Title" TextColor="{Binding Title_color}" FontSize="45" PlaceholderColor="{Binding Title_color}" Text="{Binding Title}"/>
+            <StackLayout Orientation="Horizontal">
+                <Ellipse WidthRequest="25" HeightRequest="25" Margin="10" Fill="Lightgreen " Stroke="White">
+                    <Ellipse.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Choose_Colourgreen}"/>
+                    </Ellipse.GestureRecognizers>
+                </Ellipse>
+                <Ellipse WidthRequest="25" HeightRequest="25" Margin="10" Fill="LightYellow" Stroke="White" >
+                <Ellipse.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Choose_Colouryellow}"/>
+                </Ellipse.GestureRecognizers>
+                </Ellipse>
+                <Ellipse WidthRequest="25" HeightRequest="25" Margin="10" Fill="Lightpink" Stroke="White">
+                    <Ellipse.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Choose_Colourpink}"/>
+                    </Ellipse.GestureRecognizers>
+                </Ellipse>
+                <Ellipse WidthRequest="25" HeightRequest="25" Margin="10" Fill="LightSalmon" Stroke="White" >
+                    <Ellipse.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Choose_Colourred}"/>
+                    </Ellipse.GestureRecognizers>
+                </Ellipse>
+            </StackLayout>
+            <Editor Placeholder="Content" TextColor="{Binding Info_color}" PlaceholderColor="{Binding Info_color}" Text="{Binding Info}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
